@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/annotations-api.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/catalina.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/catalina-ant.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/catalina-ha.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/catalina-tribes.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/ecj-3.6.2.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/el-api.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/jasper.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/jasper-el.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/tomcat-api.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/tomcat-coyote.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/tomcat-dbcp.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/tomcat-i18n-es.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/tomcat-i18n-fr.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/tomcat-i18n-ja.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat/lib/tomcat-util.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

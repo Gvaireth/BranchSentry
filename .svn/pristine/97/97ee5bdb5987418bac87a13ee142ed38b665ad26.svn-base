@@ -1,0 +1,65 @@
+package data;
+
+public class Branch implements Comparable {
+	private String owner;
+	private String name;
+	private Project project;
+	private long logFileSize;
+
+	public Branch() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Branch(String owner, String name, Project project) {
+		super();
+		this.owner = owner;
+		this.name = name;
+		this.project = project;
+	}
+
+	public String getSuffix() {
+		return name.substring(owner.length());
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public long getLogFileSize() {
+		return logFileSize;
+	}
+
+	public void setLogFileSize(long logFileSize) {
+		this.logFileSize = logFileSize;
+	}
+
+	@Override
+	public String toString() {
+		return "Branch [owner=" + owner + ", name=" + name + ", project=" + project + ", logFileSize=" + logFileSize + "]";
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return getName().compareTo(((Branch) o).getName());
+	}
+}

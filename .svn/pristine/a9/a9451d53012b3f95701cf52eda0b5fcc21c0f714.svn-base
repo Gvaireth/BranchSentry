@@ -1,0 +1,124 @@
+package engine;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import data.Author;
+import data.BranchContent;
+import data.BranchStatistics;
+import data.FileType;
+import data.LogEntry;
+import data.Path;
+
+public class BranchStatisticsFactory {
+	public static BranchStatistics generate(BranchContent branchContent) {
+		BranchStatistics stats = new BranchStatistics();
+
+		stats.setLastDate(branchContent.getLogEntries().get(0).getDate());
+		stats.setFirstDate(branchContent.getLogEntries().get(branchContent.getLogEntries().size() - 1).getDate());
+		stats.setNumberOfRevisions(branchContent.getLogEntries().size());
+		stats.setTotalFilesModified(branchContent.getPaths().size());
+
+		addNumberOfFileModifications(branchContent, stats);
+		addContributors(branchContent, stats);
+		addAvgCommentLength(branchContent, stats);
+
+		stats.setAge((int) ((stats.getLastDate().getTime() - stats.getFirstDate().getTime()) / (3600L * 24L * 1000L)));
+		addMostModifiedFile(branchContent, stats);
+
+		addFileTypes(branchContent, stats);
+
+		return stats;
+
+	}
+
+	private static void addFileTypes(BranchContent branchContent, BranchStatistics stats) {
+		Map<String, Integer> fileMap = new HashMap<String, Integer>();
+		List<FileType> fileTypes = new ArrayList<FileType>();
+		for (Path path : branchContent.getPaths()) {
+			int index = path.getFilename().lastIndexOf(".");
+			if (index > 0) {
+				String ext = path.getFilename().substring(index);
+				if (fileMap.containsKey(ext)) {
+					fileMap.put(ext, fileMap.get(ext) + 1);
+				} else {
+					fileMap.put(ext, 1);
+				}
+			}
+		}
+		for (Map.Entry<String, Integer> entry : fileMap.entrySet()) {
+			fileTypes.add(new FileType(entry.getKey(), entry.getValue()));
+		}
+		Collections.sort(fileTypes);
+		stats.setFileTypes(fileTypes.size() > 6 ? fileTypes.subList(0, 6) : fileTypes);
+	}
+
+	private static void addMostModifiedFile(BranchContent branchContent, BranchStatistics stats) {
+		int maxModifications = 0;
+		String mostModifiedFile = "";
+		for (Path path : branchContent.getPaths()) {
+			if (path.getEntries().size() > maxModifications) {
+				maxModifications = path.getEntries().size();
+				mostModifiedFile = path.getFilename();
+			}
+		}
+		stats.setMostChangesInOneFile(maxModifications);
+		String filename = mostModifiedFile.split("/")[mostModifiedFile.split("/").length - 1];
+		StringBuilder sb = new StringBuilder(filename);
+		int i = 0;
+		while (i < sb.length()) {
+			if (Character.isUpperCase(sb.charAt(i)) && Character.isLowerCase(sb.charAt(i + 1))) {
+				sb.insert(i, "<br>");
+				i += 4;
+			}
+			i++;
+		}
+		String result = sb.toString();
+		if (result.startsWith("<br>")) {
+			result = result.substring(4);
+		}
+		stats.setMostModifiedFile(result);
+	}
+
+	private static void addAvgCommentLength(BranchContent branchContent, BranchStatistics stats) {
+		int commentLength = 0;
+		for (LogEntry logEntry : branchContent.getLogEntries()) {
+			commentLength += logEntry.getMsg().length();
+		}
+		stats.setAvgCommentLength(commentLength / branchContent.getLogEntries().size());
+	}
+
+	private static void addNumberOfFileModifications(BranchContent branchContent, BranchStatistics stats) {
+		int fileModifications = 0;
+		for (Path path : branchContent.getPaths()) {
+			fileModifications += path.getEntries().size();
+		}
+		stats.setNumberOfFileModifications(fileModifications);
+	}
+
+	private static void addContributors(BranchContent branchContent, BranchStatistics stats) {
+		List<Author> contributors = new ArrayList<Author>();
+		for (LogEntry logEntry : branchContent.getLogEntries()) {
+			boolean found = false;
+			for (Author author : contributors) {
+				if (author.getName().equals(logEntry.getAuthor())) {
+					author.setRevisions(author.getRevisions() + 1);
+					author.setModifications(author.getModifications() + logEntry.getPaths().size());
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				Author newAuthor = new Author();
+				newAuthor.setName(logEntry.getAuthor());
+				newAuthor.setRevisions(1);
+				newAuthor.setModifications(logEntry.getPaths().size());
+				contributors.add(newAuthor);
+			}
+		}
+		stats.setContributors(contributors);
+	}
+}

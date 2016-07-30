@@ -1,0 +1,20 @@
+package web;
+
+public class Renderer {
+	public static String menuItem(String jsp, String name, String current) {
+		if (current == null) {
+			current = "intro";
+		}
+		String result = "";
+		result += "<tr><td align=\"center\" width=\"100\">";
+		if (jsp.equals(current)) {
+			result += "[ ";
+		}
+		result += "<a href=\"index.jsp?page=" + jsp + "\" class=\"mainlink\" >" + name + "</a>";
+		if (jsp.equals(current)) {
+			result += " ]";
+		}
+		result += "</td></tr><tr><td><hr></td></tr>";
+		return result;
+	}
+}

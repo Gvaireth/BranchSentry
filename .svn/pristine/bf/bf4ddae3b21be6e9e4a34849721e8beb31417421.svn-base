@@ -1,0 +1,71 @@
+package web;
+
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+import org.apache.log4j.Logger;
+
+/**
+ * Servlet Filter implementation class Activity
+ */
+// @WebFilter("/*")
+public class Activity implements Filter {
+	Logger logger = Logger.getLogger(this.getClass());
+
+	/**
+	 * Default constructor.
+	 */
+	public Activity() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see Filter#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 */
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		// TODO Auto-generated method stub
+		// place your code here
+		/*
+		 * HttpServletRequest req = (HttpServletRequest) request; String info =
+		 * new Date() + " " + req.getRemoteHost() + " " + req.getRequestURI() +
+		 * "?" + req.getQueryString();
+		 * System.out.println(request.getServletContext
+		 * ().getRealPath("D:/BranchSentry/activity.txt")); PrintWriter out =
+		 * new PrintWriter(new BufferedWriter(new
+		 * FileWriter("D:/BranchSentry/activity.txt", true)));
+		 * out.println(info); out.close(); System.out.println(info);
+		 */
+		/*
+		 * String homeDir = request.getServletContext().getRealPath("/"); File
+		 * propertiesFile = new File(homeDir, "WEB-INF/log4j.properties");
+		 * PropertyConfigurator.configure(propertiesFile.toString());
+		 * FileAppender app = new FileAppender(); app.setName("c:/mylog");
+		 * app.setFile("c:/mylog"); BasicConfigurator.configure(app);
+		 */
+
+		// logger.debug(info);
+		// pass the request along the filter chain
+		chain.doFilter(request, response);
+	}
+
+	/**
+	 * @see Filter#init(FilterConfig)
+	 */
+	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
+	}
+
+}

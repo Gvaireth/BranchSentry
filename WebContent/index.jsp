@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+     <%@page import="config.*" %>
+     <%@page import="web.*;" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Branch Sentry</title>
+
+</head> 
+
+
+<body>
+<div id="wrap">
+<%String currentPage=pageContext.getRequest().getParameter("page"); %>
+
+<table border="0px" cellpadding="5px">
+<tr><td width="100px" valign="top">
+<img src="img/logo.gif">
+</td><td>
+<div id="title">Branch Sentry</div><div id="subtitle">Carefully looking after our precious branches</div></td></tr>
+<tr><td align="left"><hr></td><td><hr></td></tr>
+<tr><td valign="top" >
+<center>
+<table border="0px" cellspacing="0px" cellpadding="0px">
+
+
+
+<%=Renderer.menuItem("start", "Intro",currentPage ) %>
+<%=Renderer.menuItem("data", "Data",currentPage ) %>
+<%=Renderer.menuItem("fetch", "Update",currentPage ) %>
+<%=Renderer.menuItem("conflicts", "Conflicts",currentPage ) %>
+<%=Renderer.menuItem("stats", "Statistics",currentPage ) %>
+<%=Renderer.menuItem("config", "Config",currentPage ) %>
+<%=Renderer.menuItem("outro", "Outro",currentPage ) %>
+
+
+
+</table>
+</center>
+</td>
+<td valign="top" height="500px">
+<jsp:include page="${empty param.page?'start':param.page}.jsp"/></td>
+</tr>
+<tr><td></td><td><hr><center> Created by <a href="mailto:pawel.zajaczkowski@axit.pl">Zajc</a>. <br>Version 0.5</center></td></tr>
+</table>
+
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+</script>
+</div>
+</body>
+
+
+
+
+
+</html>

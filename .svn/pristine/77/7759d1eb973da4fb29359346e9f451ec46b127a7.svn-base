@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@page import="config.*;" %>
+
+Welcome to Branch Sentry!<br><br>
+You may now:<br>
+<ul>
+<li>View <b>Statistics</b> - various numbers describing currently active branches<br><br> </li>
+<li>View <b>Conflicts</b> - list of potential conflicts that may came up while merging team branches to trunk<br><br> </li>
+<li>Both of the above are based on data gathered on <b><%=Utils.format(Context.getInstance().getLogsModDate()) %></b>, but...<br><br></li>
+<li>...you can <b> Update Data</b> - query svn for up to date active branches logs. This usually takes several seconds.<br><br></li>
+<li>Review <b>Configuration</b> of various things<br><br></li>
+<li>Have fun!</li>
+</ul>
+ 
+<br><br>
+
+
+   

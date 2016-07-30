@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+You may help Branch Sentry flourish by donating some mandays ;)<br><br>
+
+Future releases may include the following:
+<ul>
+<li>Support for other projects, at least Phoenix and Slang</li>
+<li>Configurable team list and names</li>
+<li>Automatic detection of new branches and switch</li>
+<li>Email notifications for teams/individuals</li>
+<li>Scheduled automatic updates</li><br>
+<li>Smarter conflict detection</li>
+<li>Customizable views</li>
+<li>Personalization</li>
+<li>Comparison with archive branches</li>
+<li>More statistics</li>
+<li>Performance improvements</li>
+<li>Further usability improvements
+<ul>
+  <li>Sorting</li>
+  <li>Filters</li>
+  <li>collapsible sections</li>
+  <li>Pagination</li>
+  <li>Smart onHover popups here and there</li>
+</ul>
+</li>
+</ul>
+Any new ideas are most welcome!<br>

@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+Teams names are hardcoded.<br>
+Branches names are hardcoded.<br>
+Log folder location is hardcoded.<br><br>
+sorry...<br>
+<img src="img/deskflip.jpg">

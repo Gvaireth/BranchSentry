@@ -1,0 +1,17 @@
+package data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Report {
+	private List<BranchContent> branchContents = new ArrayList<BranchContent>();
+
+	public List<BranchContent> getBranchContents() {
+		return branchContents;
+	}
+
+	public void setBranchContents(List<BranchContent> branchContents) {
+		this.branchContents = branchContents;
+	}
+
+}

@@ -1,0 +1,14 @@
+ <%@page import="engine.*"%>
+  <%@page import="data.*"%>
+  <%@page import="config.*"%>
+
+<%
+String team=request.getParameter("team");
+for(Branch branch:Context.getInstance().getActiveBranches(Project.AX4)){
+if(branch.getOwner().equals(team)){%>[<%}
+%>
+<a href="index.jsp?page=${param.page}&team=<%=branch.getOwner() %>"><%=branch.getOwner() %></a> 
+<% if(branch.getOwner().equals(team)){%>]<%}%>
+- 
+<%} %>
+<a href="index.jsp?page=${param.page}">Show them all!</a>

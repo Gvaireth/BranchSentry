@@ -1,0 +1,128 @@
+package data;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+
+public class BranchStatistics {
+	private int numberOfRevisions;
+	private int numberOfFileModifications;
+	private int totalFilesModified;
+	private int avgCommentLength;
+
+	private Date firstDate;
+	private Date lastDate;
+	private List<Author> contributors = new ArrayList<Author>();
+	private int age;
+	private int mostChangesInOneFile;
+	private String mostModifiedFile;
+	private List<FileType> fileTypes;
+
+	public Date getFirstDate() {
+		return firstDate;
+	}
+
+	public void setFirstDate(Date firstDate) {
+		this.firstDate = firstDate;
+	}
+
+	public Date getLastDate() {
+		return lastDate;
+	}
+
+	public void setLastDate(Date lastDate) {
+		this.lastDate = lastDate;
+	}
+
+	public int getNumberOfRevisions() {
+		return numberOfRevisions;
+	}
+
+	public void setNumberOfRevisions(int numberOfRevisions) {
+		this.numberOfRevisions = numberOfRevisions;
+	}
+
+	public int getNumberOfFileModifications() {
+		return numberOfFileModifications;
+	}
+
+	public void setNumberOfFileModifications(int numberOfFileModifications) {
+		this.numberOfFileModifications = numberOfFileModifications;
+	}
+
+	public int getTotalFilesModified() {
+		return totalFilesModified;
+	}
+
+	public void setTotalFilesModified(int totalFilesModified) {
+		this.totalFilesModified = totalFilesModified;
+	}
+
+	public List<Author> getContributors() {
+		return contributors;
+	}
+
+	public void setContributors(List<Author> contributors) {
+		this.contributors = contributors;
+	}
+
+	public int getAvgCommentLength() {
+		return avgCommentLength;
+	}
+
+	public void setAvgCommentLength(int avgCommentLength) {
+		this.avgCommentLength = avgCommentLength;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getMostChangesInOneFile() {
+		return mostChangesInOneFile;
+	}
+
+	public void setMostChangesInOneFile(int mostChangesInOneFile) {
+		this.mostChangesInOneFile = mostChangesInOneFile;
+	}
+
+	public String getMostModifiedFile() {
+		return mostModifiedFile;
+	}
+
+	public void setMostModifiedFile(String mostModifiedFile) {
+		this.mostModifiedFile = mostModifiedFile;
+	}
+
+	public List<Author> getContributorsByRevisions() {
+		Collections.<Author> sort(getContributors(), new Comparator<Author>() {
+			public int compare(Author o1, Author o2) {
+				return o2.getRevisions() - o1.getRevisions();
+			}
+		});
+		return getContributors();
+	}
+
+	public List<Author> getContributorsByModifiedFiles() {
+		Collections.<Author> sort(getContributors(), new Comparator<Author>() {
+			public int compare(Author o1, Author o2) {
+				return o2.getModifications() - o1.getModifications();
+			}
+		});
+		return getContributors();
+	}
+
+	public List<FileType> getFileTypes() {
+		return fileTypes;
+	}
+
+	public void setFileTypes(List<FileType> fileTypes) {
+		this.fileTypes = fileTypes;
+	}
+}

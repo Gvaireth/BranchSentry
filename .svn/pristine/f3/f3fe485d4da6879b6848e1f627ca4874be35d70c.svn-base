@@ -1,0 +1,16 @@
+package data;
+
+public enum Project {
+
+	AX4("/ax4/branches"), PHOENIX(""), SLANG("");
+
+	private String prefix;
+
+	Project(String prefix) {
+		this.prefix = prefix;
+	}
+
+	public String getPrefix() {
+		return prefix;
+	}
+}
